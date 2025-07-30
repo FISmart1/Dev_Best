@@ -154,7 +154,7 @@ function SiswaDetail() {
                   {siswa.instansi}
                 </span>
               </div>
-              <p className="text-white">Jumlah hafalan :{siswa.hafalan}</p>
+              <p className="text-white">Jumlah hafalan : {siswa.hafalan ?? 0}</p>
 
               <div className="d-flex flex-wrap gap-3 mb-4">
                 {siswa.cv && (
@@ -176,10 +176,21 @@ function SiswaDetail() {
                     }
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn btn-outline-dark px-4"
+                    className="btn btn-outline-light px-4"
                   >
-                    <i className="bi bi-image me-2"></i> Portofolio
+                    <i className="bi bi-box-arrow-up-right me-2"></i> Portofolio
                   </a>
+                )}
+		{siswa.linkedin && (
+                  <a href={siswa.linkedin.startsWith("http")
+                        ? siswa.linkedin
+                        : `${siswa.linkedin}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn btn-outline-light px-4"
+                        >
+                        <i className="bi bi-linkedin"></i> Linkedin
+                        </a>
                 )}
               </div>
             </div>
@@ -211,8 +222,8 @@ function SiswaDetail() {
             <h3 className="fw-bold mb-4 text-custom">
               <i className="bi bi-person-lines-fill me-2 "></i> About Me
             </h3>
-            <div className=" p-4 rounded-3">
-              <p className=" mb-0" style={{ whiteSpace: "pre-line" }}>
+            <div className="p-4 rounded-3 text-justify">
+              <p className="mb-0 whitespace-pre-wrap">
                 {siswa.deskripsi || "No description available."}
               </p>
             </div>

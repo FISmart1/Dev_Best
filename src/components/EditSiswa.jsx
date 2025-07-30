@@ -7,6 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 import CreatableSelect from "react-select/creatable";
 import CropModal from "../components/CropModal"; // pastikan path-nya sesuai file
 import imageCompression from "browser-image-compression";
+import { v4 as uuidv4 } from "uuid"; // letakkan di paling atas file
 const EditSiswa = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -293,50 +294,52 @@ const EditSiswa = () => {
 
   // Handle project form submission
   const handleProjectSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const fd = new FormData();
+  e.preventDefault();
+  try {
+    const fd = new FormData();
 
-      // Append project data
-      fd.append("name_project", projectForm.name_project);
-      fd.append("link_web", projectForm.link_web);
-      fd.append("deskripsi", projectForm.deskripsi);
-      fd.append("tools", projectForm.tools);
-      fd.append("db_siswa_id", id);
+    // ✅ Tambahkan ID unik untuk kolom 'id' di database
+    const idProject = uuidv4();
+    fd.append("id", idProject);
 
-      // Append file if exists
-      if (projectForm.foto) {
-        fd.append("foto", projectForm.foto);
-      }
+    // Append project data
+    fd.append("name_project", projectForm.name_project);
+    fd.append("link_web", projectForm.link_web);
+    fd.append("deskripsi", projectForm.deskripsi);
+    fd.append("tools", projectForm.tools);
+    fd.append("db_siswa_id", id);
 
-      const response = await axios.post(
-        "https://backend_best.smktibazma.com/api/project/upload",
-        fd
-      );
-
-      if (response.data.success) {
-        toast.success("Project berhasil ditambahkan!");
-        // Refresh projects
-        const res = await axios.get(
-          `https://backend_best.smktibazma.com/api/siswa/${id}`
-        );
-        setProjectForm({
-          name_project: "",
-          link_web: "",
-          deskripsi: "",
-          tools: "",
-          foto: null,
-        });
-        setActiveTab("projects");
-        await refreshSiswa();
-      } else {
-        toast.error(response.data.message || "Gagal menambahkan project");
-      }
-    } catch (err) {
-      console.error("Project error:", err.response?.data || err.message);
-      toast.error(err.response?.data?.message || "Gagal menambahkan project");
+    // Append file if exists
+    if (projectForm.foto) {
+      fd.append("foto", projectForm.foto);
     }
-  };
+
+    const response = await axios.post(
+      "https://backend_best.smktibazma.com/api/project/upload",
+      fd
+    );
+
+    if (response.data.success || response.data.message) {
+      toast.success("Project berhasil ditambahkan!");
+      setProjectForm({
+        name_project: "",
+        link_web: "",
+        deskripsi: "",
+        tools: "",
+        foto: null,
+      });
+      setActiveTab("projects");
+      await refreshSiswa(); // ✅ untuk menampilkan data terbaru
+    } else {
+      toast.error(response.data.message || "Gagal menambahkan project");
+    }
+  } catch (err) {
+    console.error("Project error:", err.response?.data || err.message);
+    toast.error(err.response?.data?.message || "Gagal menambahkan project");
+  }
+};
+    
+   
 
   // Loading state
   if (loading) {
@@ -619,9 +622,8 @@ const EditSiswa = () => {
                 <div className="col-md-6">
                   <label className="form-label">Status</label>
                   <select
-                    type="text"
                     name="status"
-                    value={profileForm.alamat}
+                    value={profileForm.status}
                     onChange={handleProfileChange}
                     className="form-control"
                   >

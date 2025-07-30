@@ -34,10 +34,11 @@ function AddSiswa() {
     instansi: "",
     skill: "",
     linkedin: "",
-    status: "", // âœ… TAMBAHKAN INI
+    status: "", // âTAMBAHKAN INI
     email: "",
     telepon: "",
     hafalan: "",
+    password: "",
   });
   const [files, setFiles] = useState({
     foto: null,
@@ -66,8 +67,9 @@ function AddSiswa() {
 
       skill: fd.skill,
       linkedin: fd.linkedin,
-      status: fd.status, // âœ… TAMBAHKAN INI
+      status: fd.status, // âTAMBAHKAN INI
       hafalan: fd.hafalan,
+      password: fd.password,
     });
 
     console.log({
@@ -87,6 +89,7 @@ function AddSiswa() {
       skill: fd.skill,
       linkedin: fd.linkedin,
       status: fd.status,
+      password: fd.password,
     });
     setShowModal(true);
     setIsEdit(true); // TAMBAHKAN INI
@@ -183,6 +186,7 @@ function AddSiswa() {
         email: "",
         telepon: "",
         hafalan: "",
+	password: "",
       });
       console.log("Mengirim PUT ke:", formData.id_lama);
 
@@ -233,6 +237,7 @@ function AddSiswa() {
               email: "",
               telepon: "",
               hafalan: "",
+	      password: "",
             });
             setFiles({ foto: null, portofolio_foto: null, cv: null });
           }}
@@ -462,7 +467,7 @@ function AddSiswa() {
                   />
                   <input
                     name="password"
-                    value={formData.password}
+                    value={formData.password }
                     onChange={handleChange}
                     className="form-control mb-3"
                     placeholder="password"
