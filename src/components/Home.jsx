@@ -307,10 +307,10 @@ function Home() {
         whileInView="visible"
         viewport={{ once: true }}
         variants={fadeInUp}
-        style={{ backgroundColor: "#12294A" }}
+        style={{ backgroundColor: "#12294A", height: "90vh" }}
       >
-        <div className="container my-5">
-          <div className="row align-items-center p-3">
+        <div className="container" style={{ height: "80vh"}}>
+          <div className="row align-items-center p-3" style={{ height: "100%" }}>
             <div className="col-12 col-md-6 text-white mb-4 mb-md-0 text-center text-md-start">
               <h3 className="fw-semibold" style={{ minHeight: "2.5rem" }}>
                 {text}
