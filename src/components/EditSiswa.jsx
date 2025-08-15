@@ -875,20 +875,6 @@ const EditSiswa = () => {
                   ></textarea>
                 </div>
 
-                <div className="col-12">
-                  <label className="form-label">Foto Dokumentasi</label>
-                  <input
-                    type="file"
-                    className="form-control"
-                    onChange={(e) =>
-                      setPengalamanForm({
-                        ...pengalamanForm,
-                        foto: e.target.files[0],
-                      })
-                    }
-                    accept="image/*"
-                  />
-                </div>
 
                 <div className="col-12 mt-4">
                   <div className="d-flex justify-content-end gap-3">

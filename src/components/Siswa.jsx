@@ -153,7 +153,7 @@ function SiswaByAngkatan() {
   ];
 
   return (
-    <div className="container">
+    <div className="container mt-5">
       {/* Hero Section */}
       <motion.div
         className="text-center p-5 text-white rounded-4 mb-4"
