@@ -397,7 +397,7 @@ const EditSiswa = () => {
                   id="fotoInput"
                   type="file"
                   style={{ display: "none" }}
-                  onChange={(e) => setFotoFile(e.target.files[0])}
+                  onChange={handleImageSelect}
                   accept="image/*"
                 />
               </div>
@@ -551,7 +551,6 @@ const EditSiswa = () => {
                     <option value="pelajar">Pelajar</option>
                     <option value="Staff">Staff</option>
                     <option value="Mahasiswa">Mahasiswa</option>
-                    <option value="Junior Programmer">Junior Programmer</option>
                     <option value="Belum bekerja">Belum Bekerja</option>
                   </select>
                 </div>
@@ -732,16 +731,6 @@ const EditSiswa = () => {
                     onChange={handleProfileChange}
                     className="form-control"
                   ></textarea>
-                </div>
-
-                <div className="col-md-6">
-                  <label className="form-label">Foto Profil</label>
-                  <input
-                    type="file"
-                    className="form-control"
-                    onChange={handleImageSelect}
-                    accept="image/*"
-                  />
                 </div>
 
                 <div className="col-md-6">
