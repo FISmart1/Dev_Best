@@ -34,7 +34,7 @@ function AddSiswa() {
     instansi: "",
     skill: "",
     linkedin: "",
-    status: "", // âTAMBAHKAN INI
+    status: "", // ï¿½TAMBAHKAN INI
     email: "",
     telepon: "",
     hafalan: "",
@@ -67,7 +67,7 @@ function AddSiswa() {
 
       skill: fd.skill,
       linkedin: fd.linkedin,
-      status: fd.status, // âTAMBAHKAN INI
+      status: fd.status, // ï¿½TAMBAHKAN INI
       hafalan: fd.hafalan,
       password: fd.password,
     });
@@ -252,12 +252,9 @@ function AddSiswa() {
             <tr>
               <th style={{ width: "15%" }}>NIS</th>
               <th>Nama</th>
-              <th style={{ width: "10%" }}>Angkatan</th>
+              <th style={{ width: "3%" }}>Angkatan</th>
               <th style={{ width: "20%" }}>Keahlian</th>
-              <th style={{ width: "10%" }}>Skill</th>
               <th style={{ width: "10%" }}>Linkedin</th>
-              <th style={{ width: "10%" }}>Hafalan</th>
-              <th style={{ width: "10%" }}>Portofolio</th>
               <th style={{ width: "15%" }}>Profil</th>
               <th style={{ width: "15%" }}>Aksi</th> {/* Kolom Aksi */}
             </tr>
@@ -269,26 +266,12 @@ function AddSiswa() {
                 <td>{s.name}</td>
                 <td>{s.angkatan}</td>
                 <td>{s.keahlian}</td>
-                <td>{s.skill}</td>
                 <td>
                   {s.linkedin && (
                     <a
                       href={s.linkedin}
                       target="_blank"
                       className="btn btn-primary"
-                    >
-                      Lihat
-                    </a>
-                  )}
-                </td>
-                <td>{s.hafalan}</td>
-                <td>
-                  {s.link_porto && (
-                    <a
-                      href={s.link_porto}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="btn btn-outline-primary"
                     >
                       Lihat
                     </a>
