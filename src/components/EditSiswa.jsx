@@ -226,7 +226,6 @@ const EditSiswa = () => {
       for (const key in profileForm) {
         if (key === "password" && !profileForm[key]) continue;
         if (key !== "foto") {
-          // Jangan append field foto dari profileForm
           fd.append(key, profileForm[key]);
         }
       }
@@ -254,8 +253,11 @@ const EditSiswa = () => {
 
         // Reset file inputs
         setFotoFile(null);
-        document.getElementById("fotoInput").value = ""; // Reset input file
+        document.getElementById("fotoInput").value = "";
         setCvFile(null);
+
+        // Arahkan ke halaman profil
+        navigate(`/siswa/${id}`);
       } else {
         alert("Gagal memperbarui profil");
       }
