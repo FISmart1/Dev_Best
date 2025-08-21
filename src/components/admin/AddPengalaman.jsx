@@ -142,7 +142,6 @@ function AddPengalaman() {
             <th>ID</th>
             <th>Nama</th>
             <th>Lokasi</th>
-            <th>Deskripsi</th>
             <th>Nama Siswa</th>
             <th>Aksi</th>
           </tr>
@@ -156,7 +155,6 @@ function AddPengalaman() {
                 <td>{item.id}</td>
                 <td>{item.name}</td>
                 <td>{item.lokasi}</td>
-                <td>{item.deskripsi}</td>
                 <td>{item.siswa_name}</td>
                 <td>
                   <button

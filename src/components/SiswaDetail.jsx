@@ -140,7 +140,10 @@ function SiswaDetail() {
         id="profile-section"
       >
         {/* Profile Header */}
-        <div className="bg-opacity-10 p-4 p-md-5" style={{backgroundColor: "#12294A"}}>
+        <div
+          className="bg-opacity-10 p-4 p-md-5"
+          style={{ backgroundColor: "#12294A" }}
+        >
           <div className="row align-items-center">
             <div className="col-md-8">
               <h1 className=" fw-bold text-white mb-3">{siswa.name}</h1>
@@ -154,7 +157,9 @@ function SiswaDetail() {
                   {siswa.instansi}
                 </span>
               </div>
-              <p className="text-white">Jumlah hafalan : {siswa.hafalan ?? 0}</p>
+              <p className="text-white">
+                Jumlah hafalan : {siswa.hafalan ?? 0} juz
+              </p>
 
               <div className="d-flex flex-wrap gap-3 mb-4">
                 {siswa.cv && (
@@ -181,16 +186,19 @@ function SiswaDetail() {
                     <i className="bi bi-box-arrow-up-right me-2"></i> Portofolio
                   </a>
                 )}
-		{siswa.linkedin && (
-                  <a href={siswa.linkedin.startsWith("http")
+                {siswa.linkedin && (
+                  <a
+                    href={
+                      siswa.linkedin.startsWith("http")
                         ? siswa.linkedin
-                        : `${siswa.linkedin}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="btn btn-outline-light px-4"
-                        >
-                        <i className="bi bi-linkedin"></i> Linkedin
-                        </a>
+                        : `${siswa.linkedin}`
+                    }
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-outline-light px-4"
+                  >
+                    <i className="bi bi-linkedin"></i> Linkedin
+                  </a>
                 )}
               </div>
             </div>
@@ -236,7 +244,10 @@ function SiswaDetail() {
             </h3>
             <div className="row g-3 text-custom">
               {siswa.email && (
-                <div className="col-md-6">
+                <Link
+                  to={`mailto:${siswa.email}`}
+                  className="col-md-6 text-decoration-none text-custom"
+                >
                   <div className="p-3 border rounded-3 h-100">
                     <div className="d-flex align-items-center">
                       <div className="bg-primary bg-opacity-10 rounded-circle p-3 me-3">
@@ -244,19 +255,19 @@ function SiswaDetail() {
                       </div>
                       <div>
                         <h6 className="mb-1 ">Email</h6>
-                        <a
-                          href={`mailto:${siswa.email}`}
-                          className="text-decoration-none text-custom"
-                        >
+                        <p className="text-decoration-none text-custom">
                           {siswa.email}
-                        </a>
+                        </p>
                       </div>
                     </div>
                   </div>
-                </div>
+                </Link>
               )}
               {siswa.telepon && (
-                <div className="col-md-6">
+                <Link
+                  to={`https://wa.me/${siswa.telepon}`}
+                  className="col-md-6 text-decoration-none text-custom"
+                >
                   <div className="p-3 border rounded-3 h-100">
                     <div className="d-flex align-items-center">
                       <div className="bg-primary bg-opacity-10 rounded-circle p-3 me-3">
@@ -264,16 +275,13 @@ function SiswaDetail() {
                       </div>
                       <div>
                         <h6 className="mb-1">WhatsApp</h6>
-                        <a
-                          href={`https://wa.me/${siswa.telepon}`}
-                          className="text-decoration-none text-custom"
-                        >
+                        <p className="text-decoration-none text-custom">
                           {siswa.telepon}
-                        </a>
+                        </p>
                       </div>
                     </div>
                   </div>
-                </div>
+                </Link>
               )}
               <div className="col-12">
                 <div className="p-3 border rounded-3">

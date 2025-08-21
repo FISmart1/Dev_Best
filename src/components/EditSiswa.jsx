@@ -226,7 +226,6 @@ const EditSiswa = () => {
       for (const key in profileForm) {
         if (key === "password" && !profileForm[key]) continue;
         if (key !== "foto") {
-          // Jangan append field foto dari profileForm
           fd.append(key, profileForm[key]);
         }
       }
@@ -254,8 +253,11 @@ const EditSiswa = () => {
 
         // Reset file inputs
         setFotoFile(null);
-        document.getElementById("fotoInput").value = ""; // Reset input file
+        document.getElementById("fotoInput").value = "";
         setCvFile(null);
+
+        // Arahkan ke halaman profil
+        navigate(`/siswa/${id}`);
       } else {
         alert("Gagal memperbarui profil");
       }
@@ -397,7 +399,7 @@ const EditSiswa = () => {
                   id="fotoInput"
                   type="file"
                   style={{ display: "none" }}
-                  onChange={(e) => setFotoFile(e.target.files[0])}
+                  onChange={handleImageSelect}
                   accept="image/*"
                 />
               </div>
@@ -551,7 +553,6 @@ const EditSiswa = () => {
                     <option value="pelajar">Pelajar</option>
                     <option value="Staff">Staff</option>
                     <option value="Mahasiswa">Mahasiswa</option>
-                    <option value="Junior Programmer">Junior Programmer</option>
                     <option value="Belum bekerja">Belum Bekerja</option>
                   </select>
                 </div>
@@ -735,16 +736,6 @@ const EditSiswa = () => {
                 </div>
 
                 <div className="col-md-6">
-                  <label className="form-label">Foto Profil</label>
-                  <input
-                    type="file"
-                    className="form-control"
-                    onChange={handleImageSelect}
-                    accept="image/*"
-                  />
-                </div>
-
-                <div className="col-md-6">
                   <label className="form-label">CV/Resume (PDF)</label>
                   <input
                     type="file"
@@ -886,20 +877,6 @@ const EditSiswa = () => {
                   ></textarea>
                 </div>
 
-                <div className="col-12">
-                  <label className="form-label">Foto Dokumentasi</label>
-                  <input
-                    type="file"
-                    className="form-control"
-                    onChange={(e) =>
-                      setPengalamanForm({
-                        ...pengalamanForm,
-                        foto: e.target.files[0],
-                      })
-                    }
-                    accept="image/*"
-                  />
-                </div>
 
                 <div className="col-12 mt-4">
                   <div className="d-flex justify-content-end gap-3">

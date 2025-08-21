@@ -150,9 +150,7 @@ function AddProject() {
             <tr>
               <th>ID</th>
               <th>Nama Project</th>
-              <th>Deskripsi</th>
               <th>Link</th>
-              <th>Tools</th>
               <th>Nama Siswa</th>
               <th>Aksi</th>
             </tr>
@@ -162,13 +160,11 @@ function AddProject() {
               <tr key={i}>
                 <td>{p.id}</td>
                 <td>{p.name_project}</td>
-                <td>{truncate(p.deskripsi, 50)}</td>
                 <td>
                   <a href={p.link_web} target="_blank" rel="noreferrer">
                     {p.link_web}
                   </a>
                 </td>
-                <td>{p.tools}</td>
                 <td>{p.nama_siswa}</td>
                 <td>
                   <button
