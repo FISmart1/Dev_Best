@@ -18,7 +18,7 @@ useEffect(() => {
     setIsLoading(false);
     setShowLayout(true); // munculkan lagi setelah 10 detik
     Navigate("/home"); // arahkan ke halaman home
-  }, 5000);
+  }, 3000);
 
   return () => {
     clearTimeout(timer);

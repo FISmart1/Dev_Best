@@ -453,7 +453,7 @@ export default function App() {
                     Website Sekolah
                   </Link>
                   <Link
-                    to="https://jurnal.smktibazma.com"
+                    to="https://smartpkl.smktibazma.com"
                     className="text-white text-decoration-none"
                   >
                     Jurnal PKL
