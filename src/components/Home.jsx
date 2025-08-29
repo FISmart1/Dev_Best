@@ -429,7 +429,7 @@ function Home() {
                           objectFit: "cover",
                           maxWidth: "100%",
                           minWidth: "100%",
-                          boxShadow: "0 0 12px 0px #12294A",
+                          border: "5px solid #12294A",
                         }}
                       />
                     </div>
@@ -446,7 +446,7 @@ function Home() {
                         {nonPelajar[currentIndex].name}
                       </h3>
                       <p
-                        className="ml-3"
+                        className="ml-3 text-justify"
                         style={{ minHeight: "72px", maxWidth: "80%" }}
                       >
                         {truncateText(
@@ -744,7 +744,7 @@ function Home() {
                 <li>SISMAKO (Sistem Managament Sekolah)</li>
                 <li>Webite Sekolah</li>
                 <li>Sistem Absensi</li>
-                <li>Jurnal PKL</li>
+                <li>Smart PKL</li>
               </ul>
             </div>
             <div className="col-md-7 ml-5">
@@ -945,7 +945,7 @@ function Home() {
                           <i key={i} className="bi bi-star-fill"></i>
                         ))}
                       </div>
-                      <p className="card-text fst-italic">"{item.pesan}"</p>
+                      <p className="card-text fst-italic text-justify">"{item.pesan}"</p>
                     </div>
                     <div className="mt-auto text-end">
                       <i className="bi bi-quote fs-1 text-custom opacity-10"></i>

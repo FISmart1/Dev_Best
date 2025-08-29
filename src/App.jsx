@@ -456,7 +456,7 @@ export default function App() {
                     to="https://smartpkl.smktibazma.com"
                     className="text-white text-decoration-none"
                   >
-                    Jurnal PKL
+                    Smart PKL
                   </Link>
                 </div>
               </div>
@@ -466,7 +466,7 @@ export default function App() {
                 <h6 className="fw-bold mb-2">Hubungi Kami</h6>
                 <a
                   href="https://smktibazma.com"
-                  className="text-white text-decoration-underline"
+                  className="text-white text-decoration-none"
                 >
                   smktibazma.com
                 </a>
@@ -477,9 +477,26 @@ export default function App() {
 
             {/* Bottom Footer */}
             <div className="d-flex flex-column flex-md-row justify-content-between align-items-center">
+              
               <p className="mb-2 text-center text-md-start small">
-                <strong>© Team Developer</strong> Ristina Eka Salsabila S.Kom -
-                Nur Yusuf Ferdiansyah - Muhammad Iqbal Asqalani
+                <strong>© Team Developer</strong> <a
+                  href="https://www.instagram.com/ristinaesb/"
+                  className="text-white text-decoration-none"
+                >
+                  Ristina Eka Salsabila, S.Kom
+                </a> - {" "}
+                <a
+                  href="https://www.nyusuf.my.id"
+                  className="text-white text-decoration-none"
+                >
+                  Nur Yusuf Ferdiansyah
+                </a> - {" "}
+                <a
+                  href="https://www.instagram.com/iqball.a_16/"
+                  className="text-white text-decoration-none"
+                >
+                  Muhammad Iqbal Asqalani
+                </a>
               </p>
               <div>
                 <a href="#" className="text-white me-3 mb-2 fs-5">

@@ -535,7 +535,7 @@ const EditSiswa = () => {
                     <option value="IT Support Assistant">
                       IT Support Assistant
                     </option>
-                    <option value="IT Support Assistant">IOT Engineer</option>
+                    <option value="IOT Engineer">IOT Engineer</option>
                     <option value="Photography">Photography</option>
                     <option value="Videography">Videography</option>
                   </select>
