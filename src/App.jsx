@@ -492,7 +492,7 @@ export default function App() {
                   Nur Yusuf Ferdiansyah
                 </a> - {" "}
                 <a
-                  href="https://www.instagram.com/iqball.a_16/"
+                  href="https://www.iqball.my.id/"
                   className="text-white text-decoration-none"
                 >
                   Muhammad Iqbal Asqalani
