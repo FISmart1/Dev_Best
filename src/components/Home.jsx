@@ -850,46 +850,7 @@ function Home() {
       </motion.div>
 
       {/* Partners Section */}
-      <motion.div
-        className="mt-5 py-5"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={fadeInUp}
-      >
-        <h2 className="text-center fw-bold mb-5">Mitra Kami</h2>
-        <div className="px-2">
-          <div
-            ref={mitraRef}
-            className="slider overflow-hidden w-100"
-            style={{
-              width: "100vw",
-              whiteSpace: "nowrap",
-            }}
-          >
-            <div
-              className="slide-track d-flex align-items-center gap-5 px-5"
-              style={{
-                width: `${logos.length * 2 * 220}px`,
-              }}
-            >
-              {[...logos, ...logos].map((src, i) => (
-                <img
-                  key={i}
-                  src={src}
-                  alt={`mitra-${i}`}
-                  style={{
-                    width: "200px",
-                    height: "80px",
-                    objectFit: "contain",
-                    flexShrink: 0,
-                  }}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
-      </motion.div>
+      
       {/* Testimonials Section */}
       <motion.div
         className="container my-2 py-5"
@@ -1038,6 +999,46 @@ function Home() {
           </div>
         </div>
       )}
+      <motion.div
+        className="mt-5 py-5"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={fadeInUp}
+      >
+        <h2 className="text-center fw-bold mb-5">Mitra Kami</h2>
+        <div className="px-2">
+          <div
+            ref={mitraRef}
+            className="slider overflow-hidden w-100"
+            style={{
+              width: "100vw",
+              whiteSpace: "nowrap",
+            }}
+          >
+            <div
+              className="slide-track d-flex align-items-center gap-5 px-5"
+              style={{
+                width: `${logos.length * 2 * 220}px`,
+              }}
+            >
+              {[...logos, ...logos].map((src, i) => (
+                <img
+                  key={i}
+                  src={src}
+                  alt={`mitra-${i}`}
+                  style={{
+                    width: "200px",
+                    height: "80px",
+                    objectFit: "contain",
+                    flexShrink: 0,
+                  }}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      </motion.div>
     </div>
   );
 }
