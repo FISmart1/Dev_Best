@@ -565,12 +565,6 @@ function Home() {
               Di balik setiap proyek, ada semangat belajar, kerja keras, dan inovasi. Proyek-proyek ini adalah bukti bahwa alumni dan siswa SMK TI BAZMA mampu menciptakan teknologi yang bermanfaat dan siap bersaing di dunia industri maupun
               masyarakat.
             </p>
-            <ul className="list-unstyled">
-              <li>SISMAKO (Sistem Managament Sekolah)</li>
-              <li>Website Sekolah</li>
-              <li>Sistem Absensi</li>
-              <li>Smart PKL</li>
-            </ul>
           </div>
 
           {/* Bagian gambar: scroll horizontal */}
