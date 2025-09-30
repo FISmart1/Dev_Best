@@ -283,7 +283,7 @@ function Home() {
                 <span className="badge bg-light text-dark">Networking</span>
                 <span className="badge bg-light text-dark">IoT Engineer</span>
               </div>
-              <Link to="/angkatan" className="btn text-black mt-4 rounded-full" style={{ backgroundColor: 'white' }}>
+              <Link to="/angkatan" className="btn text-black mt-4 rounded-pill" style={{ backgroundColor: 'white' }}>
                 Lihat Alumni dan Siswa
               </Link>
             </div>
