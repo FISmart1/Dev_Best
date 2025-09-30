@@ -490,7 +490,8 @@ function SiswaDetail() {
                       {selectedProject.tools.split(",").map((tool, index) => (
                         <span
                           key={index}
-                          className="badge btn-free py-2 px-3"
+                          className="badge py-2 px-3"
+                          style={{ border: "1px solid #12294A", color: "#12294A" }}
                         >
                           {tool.trim()}
                         </span>
@@ -505,7 +506,7 @@ function SiswaDetail() {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    Visit Project{" "}
+                    Lihat Project{" "}
                     <i className="bi bi-box-arrow-up-right ms-2"></i>
                   </a>
                 )}
