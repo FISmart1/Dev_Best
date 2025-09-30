@@ -52,6 +52,7 @@ const EditSiswa = () => {
     password: "",
     hafalan: "",
     status: "",
+    link_porto: "",
   });
 
   const [pengalamanForm, setPengalamanForm] = useState({
@@ -167,6 +168,7 @@ const EditSiswa = () => {
           password: res.data.siswa.password || "",
           hafalan: res.data.siswa.hafalan || "",
           status: res.data.siswa.status || "",
+          link_porto: res.data.siswa.link_porto || "",
         });
         console.log("Data siswa:", res.data.siswa);
       } catch (err) {
@@ -757,6 +759,21 @@ const EditSiswa = () => {
                     }}
                     className="mb-3"
                     placeholder="Pilih atau tambahkan skill"
+                  />
+                </div>
+                <div className="col-12">
+                  <label className="form-label">Link Portofolio</label>
+                  <input
+                    type="url"
+                    className="form-control"
+                    placeholder="https://contohportofolio.com"
+                    value={profileForm.link_porto || ""}
+                    onChange={(e) =>
+                      setProfileForm({
+                        ...profileForm,
+                        link_porto: e.target.value,
+                      })
+                    }
                   />
                 </div>
 

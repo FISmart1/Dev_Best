@@ -168,7 +168,7 @@ function SiswaDetail() {
                   <a
                     href={`https://backend_best.smktibazma.com/uploads/${siswa.cv}`}
                     download
-                    className="btn btn-dark px-4"
+                    className="btn btn-white bg-white text-black px-4 rounded-pill"
                   >
                     <i className="bi bi-file-earmark-pdf me-2"></i> Download CV
                   </a>
@@ -183,7 +183,7 @@ function SiswaDetail() {
                     }
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn btn-outline-light px-4"
+                    className="btn btn-light px-4 rounded-pill"
                   >
                     <i className="bi bi-box-arrow-up-right me-2"></i> Portofolio
                   </a>
@@ -197,7 +197,7 @@ function SiswaDetail() {
                     }
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn btn-outline-light px-4"
+                    className="btn btn-light px-4 rounded-pill"
                   >
                     <i className="bi bi-linkedin"></i> Linkedin
                   </a>
