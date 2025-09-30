@@ -284,7 +284,7 @@ function Home() {
                 <span className="badge bg-light text-dark">Networking</span>
                 <span className="badge bg-light text-dark">IoT Engineer</span>
               </div>
-              <Link to="/angkatan" className="btn text-black mt-4 rounded-pill" style={{ backgroundColor: 'white' }}>
+              <Link to="/angkatan" className="btn text-black mt-4 rounded-pill px-3" style={{ backgroundColor: 'white' }}>
                 Lihat Alumni dan Siswa
               </Link>
             </div>
@@ -419,7 +419,7 @@ function Home() {
                 <div className="bg-white bg-opacity-25 rounded-circle mb-3 d-flex align-items-center justify-content-center" style={{ width: '60px', height: '60px' }}>
                   <i className="bi bi-award-fill fs-3 text-white"></i>
                 </div>
-                <h5 className="fw-bold mb-1 text-white">{skillList.length}+ Skill</h5>
+                <h5 className="fw-bold mb-1 text-white">{skillList.length}+ Keahlian</h5>
                 <p className="text-white small">Skill yang dibutuhkan didunia kerja</p>
               </div>
             </div>

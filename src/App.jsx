@@ -207,7 +207,7 @@ export default function App() {
                                   : navigate(`/edit-siswa/${user.id}`);
                               }}
                             >
-                              Go to Profile
+                              Profil Saya
                             </button>
                           </div>
 
@@ -226,7 +226,7 @@ export default function App() {
                                 navigate("/home");
                               }}
                             >
-                              Logout
+                              Keluar
                             </button>
                           </div>
                         </div>
@@ -238,7 +238,7 @@ export default function App() {
                       style={{ backgroundColor: "#12294A", color: "white" }}
                       onClick={() => setShowModal(true)}
                     >
-                      Login
+                      Masuk
                     </button>
                   )}
                 </div>
@@ -279,7 +279,7 @@ export default function App() {
                   style={{ backgroundColor: "#12294A", color: "white" }}
                   onClick={() => setShowMobileMenu(false)}
                 >
-                  Home
+                  Beranda
                 </Link>
                 <Link
                   to="/angkatan"
@@ -287,7 +287,7 @@ export default function App() {
                   style={{ backgroundColor: "#12294A", color: "white" }}
                   onClick={() => setShowMobileMenu(false)}
                 >
-                  Student
+                  Cari Talenta
                 </Link>
                 {user ? (
                   <div className="d-flex flex-column gap-2">
@@ -314,7 +314,7 @@ export default function App() {
                         navigate("/home");
                       }}
                     >
-                      Logout
+                      Keluar
                     </button>
                   </div>
                 ) : (
@@ -323,7 +323,7 @@ export default function App() {
                     style={{ backgroundColor: "#12294A", color: "white" }}
                     onClick={() => setShowModal(true)}
                   >
-                    Login
+                    Masuk
                   </button>
                 )}
               </div>
@@ -353,7 +353,7 @@ export default function App() {
             className="modal-content p-4 rounded bg-white"
             style={{ width: "90%", maxWidth: "400px" }}
           >
-            <h2 className="mb-3">Login</h2>
+            <h2 className="mb-3">Masuk</h2>
             <input
               type="text"
               placeholder="NIS"
@@ -373,7 +373,7 @@ export default function App() {
               style={{ backgroundColor: "#12294A", color: "white" }}
               onClick={handleLogin}
             >
-              Login
+              Masuk
             </button>
             <button
               className="btn btn-secondary w-100"
@@ -393,7 +393,7 @@ export default function App() {
       {/* Footer */}
       {showLayout && (
         <footer
-          className="navbar-custom text-white pt-4"
+          className="navbar-custom text-white pt-4 pb-2"
           style={{ backgroundColor: "#12294A" }}
         >
           <div className="container">
@@ -425,13 +425,13 @@ export default function App() {
                     to="/angkatan"
                     className="text-white text-decoration-none mb-1"
                   >
-                    Siswa atau Alumni
+                    Cari talenta
                   </Link>
                   <Link
                     to="/angkatan"
                     className="text-white text-decoration-none"
                   >
-                    Login
+                    Masuk
                   </Link>
                 </div>
               </div>
@@ -447,7 +447,7 @@ export default function App() {
                     SISMAKO
                   </Link>
                   <Link
-                    to="https://smktibazma.com"
+                    to="https://smktibazma.sch.id"
                     className="text-white text-decoration-none mb-1"
                   >
                     Website Sekolah
@@ -458,6 +458,12 @@ export default function App() {
                   >
                     Smart PKL
                   </Link>
+                  <Link
+                    to="https://berbagi.smktibazma.com"
+                    className="text-white text-decoration-none"
+                  >
+                    Sesama
+                  </Link>
                 </div>
               </div>
 
@@ -465,7 +471,7 @@ export default function App() {
               <div className="col-12 col-md-12 col-lg-3">
                 <h6 className="fw-bold mb-2">Hubungi Kami</h6>
                 <a
-                  href="https://smktibazma.com"
+                  href="https://smktibazma.sch.id"
                   className="text-white text-decoration-none"
                 >
                   smktibazma.com
@@ -478,8 +484,8 @@ export default function App() {
             {/* Bottom Footer */}
             <div className="d-flex flex-column flex-md-row justify-content-between align-items-center">
               
-              <p className="mb-2 text-center text-md-start small">
-                <strong>© Team Developer</strong> <a
+              <p className="text-center text-md-start small">
+                <strong>© Tim Pengembang</strong> <a
                   href="https://www.instagram.com/ristinaesb/"
                   className="text-white text-decoration-none"
                 >
