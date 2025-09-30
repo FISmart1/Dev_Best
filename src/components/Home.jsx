@@ -283,7 +283,7 @@ function Home() {
                 <span className="badge bg-light text-dark">Networking</span>
                 <span className="badge bg-light text-dark">IoT Engineer</span>
               </div>
-              <Link to="/angkatan" className="btn text-black mt-4" style={{ backgroundColor: 'white' }}>
+              <Link to="/angkatan" className="btn text-black mt-4 rounded-full" style={{ backgroundColor: 'white' }}>
                 Lihat Alumni dan Siswa
               </Link>
             </div>
@@ -439,9 +439,9 @@ function Home() {
       <motion.div className="container my-5" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}>
         <div className="container-fluid my-5">
           <h2 className="fw-bold" style={{ color: '#12294A', textAlign: 'center' }}>
-            Temukan Talenta Terbaik
+            Temukan Talenta Terbaik BEST
           </h2>
-          <p className="text-muted text-center">Jelajahi profil alumni dan siswa berbakat dari SMK TI BAZMA dan temukan kolaborator terbaik untuk proyek anda.</p>
+          <p className="text-muted text-center">Jelajahi profil alumni dan siswa berbakat dari SMK TI BAZMA dan temukan kolaborator terbaik untuk proyek anda melalui BEST.</p>
         </div>
 
         <div className="container mb-5">
