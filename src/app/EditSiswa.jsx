@@ -17,6 +17,9 @@ const EditSiswa = () => {
   const [activeTab, setActiveTab] = useState("profile");
   const [showPassword, setShowPassword] = useState(false);
   const [skillList, setSkillList] = useState([]);
+  const [editingPengalaman, setEditingPengalaman] = useState(null);
+  const [editingProject, setEditingProject] = useState(null);
+
   const skillOptions = [
     { value: "HTML", label: "HTML" },
     { value: "CSS", label: "CSS" },
@@ -95,6 +98,21 @@ const EditSiswa = () => {
       setFotoFile(compressedFile);
     } catch (error) {
       console.error("Gagal kompres gambar:", error);
+    }
+  };
+  const compressImage = async (file) => {
+    if (!file) return null;
+    try {
+      const options = {
+        maxSizeMB: 0.5, // maksimal 500 KB
+        maxWidthOrHeight: 800, // maksimal 800px
+        useWebWorker: true,
+      };
+      const compressedFile = await imageCompression(file, options);
+      return compressedFile;
+    } catch (error) {
+      console.error("❌ Gagal kompres gambar:", error);
+      return file; // fallback kalau gagal
     }
   };
 
@@ -280,49 +298,67 @@ const EditSiswa = () => {
     }
 
     try {
-      const response = await axios.post(
-        "https://backend_best.smktibazma.com/api/pengalaman",
-        fd // JANGAN tambahkan headers!
-      );
-      toast.success("Pengalaman berhasil ditambahkan");
+      if (editingPengalaman) {
+        // UPDATE
+        await axios.put(
+          `https://backend_best.smktibazma.com/api/editpengalaman/${editingPengalaman}`,
+          fd,
+          { headers: { "Content-Type": "multipart/form-data" } }
+        );
+
+        toast.success("Pengalaman berhasil diperbarui");
+        setEditingPengalaman(null);
+      } else {
+        // CREATE
+        await axios.post(
+          "https://backend_best.smktibazma.com/api/pengalaman",
+          fd
+        );
+        toast.success("Pengalaman berhasil ditambahkan");
+      }
       setPengalamanForm({ name: "", lokasi: "", deskripsi: "", foto: null });
       setActiveTab("experience");
       await refreshSiswa();
     } catch (err) {
       console.error("Gagal simpan pengalaman:", err);
-      toast.error("Gagal menambahkan pengalaman");
+      toast.error("Gagal menyimpan pengalaman");
     }
   };
 
   // Handle project form submission
   const handleProjectSubmit = async (e) => {
-  e.preventDefault();
-  try {
-    const fd = new FormData();
+    e.preventDefault();
+    try {
+      const fd = new FormData();
+      fd.append("name_project", projectForm.name_project);
+      fd.append("link_web", projectForm.link_web);
+      fd.append("deskripsi", projectForm.deskripsi);
+      fd.append("tools", projectForm.tools);
+      fd.append("db_siswa_id", id);
+      if (projectForm.foto) fd.append("foto", projectForm.foto);
 
-    // ✅ Tambahkan ID unik untuk kolom 'id' di database
-    const idProject = uuidv4();
-    fd.append("id", idProject);
+      if (editingProject) {
+        // UPDATE
+        await axios.put(
+          `https://backend_best.smktibazma.com/api/project/${editingProject}`,
+          fd,
+          { headers: { "Content-Type": "multipart/form-data" } }
+        );
+        toast.success("Project berhasil diperbarui!");
+        setEditingProject(null);
+      } else {
+        // CREATE
+        const idProject = uuidv4();
+        fd.append("id", idProject);
+        await axios.post(
+          "https://backend_best.smktibazma.com/api/project/upload",
+          fd,
+          { headers: { "Content-Type": "multipart/form-data" } }
+        );
+        toast.success("Project berhasil ditambahkan!");
+      }
 
-    // Append project data
-    fd.append("name_project", projectForm.name_project);
-    fd.append("link_web", projectForm.link_web);
-    fd.append("deskripsi", projectForm.deskripsi);
-    fd.append("tools", projectForm.tools);
-    fd.append("db_siswa_id", id);
-
-    // Append file if exists
-    if (projectForm.foto) {
-      fd.append("foto", projectForm.foto);
-    }
-
-    const response = await axios.post(
-      "https://backend_best.smktibazma.com/api/project/upload",
-      fd
-    );
-
-    if (response.data.success || response.data.message) {
-      toast.success("Project berhasil ditambahkan!");
+      // ✅ reset form
       setProjectForm({
         name_project: "",
         link_web: "",
@@ -331,17 +367,14 @@ const EditSiswa = () => {
         foto: null,
       });
       setActiveTab("projects");
-      await refreshSiswa(); // ✅ untuk menampilkan data terbaru
-    } else {
-      toast.error(response.data.message || "Gagal menambahkan project");
+
+      // ✅ refresh data siswa
+      await refreshSiswa();
+    } catch (err) {
+      console.error("Project error:", err.response?.data || err.message);
+      toast.error("Gagal menyimpan project");
     }
-  } catch (err) {
-    console.error("Project error:", err.response?.data || err.message);
-    toast.error(err.response?.data?.message || "Gagal menambahkan project");
-  }
-};
-    
-   
+  };
 
   // Loading state
   if (loading) {
@@ -801,6 +834,21 @@ const EditSiswa = () => {
                           >
                             <i className="bi bi-trash"></i>
                           </button>
+                          <button
+                            className="btn btn-sm btn-outline-primary me-2"
+                            onClick={() => {
+                              setPengalamanForm({
+                                name: item.name,
+                                lokasi: item.lokasi,
+                                deskripsi: item.deskripsi,
+                                foto: null, // default kosong, user bisa upload baru
+                              });
+                              setEditingPengalaman(item.id);
+                              setActiveTab("add-experience");
+                            }}
+                          >
+                            <i className="bi bi-pencil"></i>
+                          </button>
                         </div>
                         <p className="text-muted mb-1">{item.lokasi}</p>
                         <p className="card-text">{item.deskripsi}</p>
@@ -877,7 +925,24 @@ const EditSiswa = () => {
                     required
                   ></textarea>
                 </div>
-
+                <div className="col-12">
+                  <label className="form-label">Foto Pengalaman</label>
+                  <input
+                    type="file"
+                    className="form-control"
+                    accept="image/*"
+                    onChange={async (e) => {
+                      const file = e.target.files[0];
+                      if (file) {
+                        const compressed = await compressImage(file);
+                        setPengalamanForm({
+                          ...pengalamanForm,
+                          foto: compressed,
+                        });
+                      }
+                    }}
+                  />
+                </div>
 
                 <div className="col-12 mt-4">
                   <div className="d-flex justify-content-end gap-3">
@@ -946,6 +1011,22 @@ const EditSiswa = () => {
                           onClick={() => deleteProject(item.id)}
                         >
                           <i className="bi bi-trash"></i>
+                        </button>
+                        <button
+                          className="btn btn-sm btn-outline-primary me-2"
+                          onClick={() => {
+                            setProjectForm({
+                              name_project: item.name_project,
+                              link_web: item.link_web,
+                              deskripsi: item.deskripsi,
+                              tools: item.tools,
+                              foto: null,
+                            });
+                            setEditingProject(item.id);
+                            setActiveTab("add-project");
+                          }}
+                        >
+                          <i className="bi bi-pencil"></i>
                         </button>
                       </div>
                       <div className="card-body">
@@ -1050,13 +1131,14 @@ const EditSiswa = () => {
                   <input
                     type="file"
                     className="form-control"
-                    onChange={(e) =>
-                      setProjectForm({
-                        ...projectForm,
-                        foto: e.target.files[0],
-                      })
-                    }
                     accept="image/*"
+                    onChange={async (e) => {
+                      const file = e.target.files[0];
+                      if (file) {
+                        const compressed = await compressImage(file);
+                        setProjectForm({ ...projectForm, foto: compressed });
+                      }
+                    }}
                   />
                 </div>
 
