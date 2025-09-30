@@ -19,6 +19,8 @@ const EditSiswa = () => {
   const [skillList, setSkillList] = useState([]);
   const [editingPengalaman, setEditingPengalaman] = useState(null);
   const [editingProject, setEditingProject] = useState(null);
+  const [showFotoModal, setShowFotoModal] = useState(false);
+  const [selectedFoto, setSelectedFoto] = useState(null);
 
   const skillOptions = [
     { value: "HTML", label: "HTML" },
@@ -828,28 +830,44 @@ const EditSiswa = () => {
                       <div className="card-body">
                         <div className="d-flex justify-content-between align-items-start">
                           <h5 className="card-title">{item.name}</h5>
-                          <button
-                            className="btn btn-sm btn-outline-danger"
-                            onClick={() => deletePengalaman(item.id)}
-                          >
-                            <i className="bi bi-trash"></i>
-                          </button>
-                          <button
-                            className="btn btn-sm btn-outline-primary me-2"
-                            onClick={() => {
-                              setPengalamanForm({
-                                name: item.name,
-                                lokasi: item.lokasi,
-                                deskripsi: item.deskripsi,
-                                foto: null, // default kosong, user bisa upload baru
-                              });
-                              setEditingPengalaman(item.id);
-                              setActiveTab("add-experience");
-                            }}
-                          >
-                            <i className="bi bi-pencil"></i>
-                          </button>
+                          <div className="d-flex gap-2">
+                            {item.foto && (
+                              <button
+                                className="btn btn-sm btn-outline-primary"
+                                onClick={() => {
+                                  setSelectedFoto(
+                                    `https://backend_best.smktibazma.com/uploads/${item.foto}`
+                                  );
+                                  setShowFotoModal(true);
+                                }}
+                              >
+                                <i className="bi bi-eye"></i> Lihat
+                              </button>
+                            )}
+                            <button
+                              className="btn btn-sm btn-outline-primary"
+                              onClick={() => {
+                                setPengalamanForm({
+                                  name: item.name,
+                                  lokasi: item.lokasi,
+                                  deskripsi: item.deskripsi,
+                                  foto: null,
+                                });
+                                setEditingPengalaman(item.id);
+                                setActiveTab("add-experience");
+                              }}
+                            >
+                              <i className="bi bi-pencil"></i>
+                            </button>
+                            <button
+                              className="btn btn-sm btn-outline-danger"
+                              onClick={() => deletePengalaman(item.id)}
+                            >
+                              <i className="bi bi-trash"></i>
+                            </button>
+                          </div>
                         </div>
+
                         <p className="text-muted mb-1">{item.lokasi}</p>
                         <p className="card-text">{item.deskripsi}</p>
                         {item.foto && (
@@ -1172,6 +1190,45 @@ const EditSiswa = () => {
           onClose={() => setShowCropModal(false)}
           onCropDone={handleCropDone}
         />
+      )}
+      {showFotoModal && (
+        <div
+          className="modal fade show"
+          style={{ display: "block", backgroundColor: "rgba(0,0,0,0.6)" }}
+        >
+          <div className="modal-dialog modal-lg modal-dialog-centered">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title">Sertifikat Pengalaman</h5>
+                <button
+                  type="button"
+                  className="btn-close"
+                  onClick={() => setShowFotoModal(false)}
+                ></button>
+              </div>
+              <div className="modal-body text-center">
+                {selectedFoto ? (
+                  <img
+                    src={selectedFoto}
+                    alt="Sertifikat"
+                    className="img-fluid rounded"
+                  />
+                ) : (
+                  <p className="text-muted">Tidak ada foto sertifikat</p>
+                )}
+              </div>
+              <div className="modal-footer">
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  onClick={() => setShowFotoModal(false)}
+                >
+                  Tutup
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
       )}
     </div>
   );
