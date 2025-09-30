@@ -5,7 +5,7 @@ import { AuthContext } from "../../context/AuthContext";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import CreatableSelect from "react-select/creatable";
-import CropModal from "../components/CropModal"; // pastikan path-nya sesuai file
+import CropModal from "../app/CropModal"; // pastikan path-nya sesuai file
 import imageCompression from "browser-image-compression";
 import { v4 as uuidv4 } from "uuid"; // letakkan di paling atas file
 const EditSiswa = () => {

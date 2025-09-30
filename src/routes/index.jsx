@@ -4,19 +4,19 @@
 import { Routes, Route } from "react-router-dom";
 
 //import view home
-import Home from "../components/Home";
-import SiswaByAngkatan from "../components/Siswa";
-import SiswaDetail from "../components/SiswaDetail";
+import Home from "../app/Home";
+import SiswaByAngkatan from "../app/Siswa";
+import SiswaDetail from "../app/SiswaDetail";
 
-import Admin from "../components/admin/AdminDashboard";
-import AddSiswa from "../components/admin/AddSiswa";
-import AddPengalaman from "../components/admin/AddPengalaman";
-import AddProject from "../components/admin/AddProject";
-import Loading from "../components/loading";
+import Admin from "../app/admin/AdminDashboard";
+import AddSiswa from "../app/admin/AddSiswa";
+import AddPengalaman from "../app/admin/AddPengalaman";
+import AddProject from "../app/admin/AddProject";
+import Loading from "../app/loading";
 
 
-import EditSiswa from "../components/EditSiswa";
-import ProtectedRoute from "../components/ProtectedRoute";
+import EditSiswa from "../app/EditSiswa";
+import ProtectedRoute from "../app/ProtectedRoute";
 import { useAuth } from "../../context/AuthContext";
 export default function AppRoutes() {
   const { user } = useAuth(); // gunakan context

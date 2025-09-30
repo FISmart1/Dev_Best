@@ -22,6 +22,7 @@ import absensi from '../assets/absensi.png';
 import orang from '../assets/orang.png';
 import webJurnal from '../assets/web-jurnal.png';
 import sesama from '../assets/sesama.png';
+import HorizontalScroll from './components/scroll';
 
 function Home() {
   const navigate = useNavigate();
@@ -568,15 +569,10 @@ function Home() {
           </div>
 
           {/* Bagian gambar: scroll horizontal */}
-          <div
-            className="d-flex flex-nowrap gap-3 overflow-auto pb-3 pt-3 pl-2"
-            style={{
-              scrollSnapType: 'x mandatory',
-            }}
-          >
+          <HorizontalScroll>
             {/* Kartu 1 */}
             <motion.div
-              className="card border-0 rounded p-0 flex-shrink-0"
+              className="card border-0 rounded p-0 flex-shrink-0 no-select"
               style={{
                 minWidth: '220px', // batas minimal
                 maxWidth: '300px', // batas maksimal
@@ -599,7 +595,7 @@ function Home() {
 
             {/* Kartu 2 */}
             <motion.div
-              className="card border-0 rounded p-0 flex-shrink-0"
+              className="card border-0 rounded p-0 flex-shrink-0 no-select"
               style={{
                 minWidth: '220px',
                 maxWidth: '300px',
@@ -622,7 +618,7 @@ function Home() {
 
             {/* Kartu 3 */}
             <motion.div
-              className="card border-0 rounded p-0 flex-shrink-0"
+              className="card border-0 rounded p-0 flex-shrink-0 no-select"
               style={{
                 minWidth: '220px',
                 maxWidth: '300px',
@@ -645,7 +641,7 @@ function Home() {
 
             {/* Kartu 4 */}
             <motion.div
-              className="card border-0 rounded p-0 flex-shrink-0"
+              className="card border-0 rounded p-0 flex-shrink-0 no-select"
               style={{
                 minWidth: '220px',
                 maxWidth: '300px',
@@ -668,7 +664,7 @@ function Home() {
 
             {/* Kartu 5 */}
             <motion.div
-              className="card border-0 rounded p-0 flex-shrink-0"
+              className="card border-0 rounded p-0 flex-shrink-0 no-select"
               style={{
                 minWidth: '220px',
                 maxWidth: '300px',
@@ -688,7 +684,7 @@ function Home() {
                 <h5 className="text-dark">Jurnal PKL</h5>
               </div>
             </motion.div>
-          </div>
+          </HorizontalScroll>
         </div>
       </motion.div>
 
