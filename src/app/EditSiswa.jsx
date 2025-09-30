@@ -850,7 +850,7 @@ const EditSiswa = () => {
                           <div className="d-flex gap-2">
                             {item.foto && (
                               <button
-                                className="btn btn-sm btn-outline-primary"
+                                className="btn btn-sm btn-free"
                                 onClick={() => {
                                   setSelectedFoto(
                                     `https://backend_best.smktibazma.com/uploads/${item.foto}`
@@ -862,7 +862,7 @@ const EditSiswa = () => {
                               </button>
                             )}
                             <button
-                              className="btn btn-sm btn-outline-primary"
+                              className="btn btn-sm btn-free"
                               onClick={() => {
                                 setPengalamanForm({
                                   name: item.name,
@@ -1048,7 +1048,7 @@ const EditSiswa = () => {
                           <i className="bi bi-trash"></i>
                         </button>
                         <button
-                          className="btn btn-sm btn-outline-primary me-2"
+                          className="btn btn-sm btn-free me-2"
                           onClick={() => {
                             setProjectForm({
                               name_project: item.name_project,
@@ -1068,14 +1068,14 @@ const EditSiswa = () => {
                         <h5 className="card-title">{item.name_project}</h5>
                         <p className="card-text">{item.deskripsi}</p>
                         <p className="text-muted mb-1">
-                          <strong>Tools:</strong> {item.tools}
+                          <strong>Alat:</strong> {item.tools}
                         </p>
                         {item.link_web && (
                           <a
                             href={item.link_web}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="btn btn-sm btn-outline-primary mt-2"
+                            className="btn btn-sm btn-free-nooutline mt-2"
                           >
                             Lihat Proyek
                           </a>

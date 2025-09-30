@@ -230,7 +230,7 @@ function SiswaDetail() {
           {/* About Section */}
           <section className="mb-5">
             <h3 className="fw-bold mb-4 text-custom">
-              <i className="bi bi-person-lines-fill me-2 "></i> About Me
+              <i className="bi bi-person-lines-fill me-2 "></i> Tentang
             </h3>
             <div className="p-4 rounded-3 text-justify">
               <p className="mb-0 whitespace-pre-wrap">
@@ -242,7 +242,7 @@ function SiswaDetail() {
           {/* Contact Info */}
           <section className="mb-5">
             <h3 className="fw-bold mb-4 text-custom">
-              <i className="bi bi-envelope-at-fill me-2"></i> Contact
+              <i className="bi bi-envelope-at-fill me-2"></i> Kontak
             </h3>
             <div className="row g-3 text-custom">
               {siswa.email && (
@@ -292,7 +292,7 @@ function SiswaDetail() {
                       <i className="bi bi-geo-alt-fill"></i>
                     </div>
                     <div>
-                      <h6 className="mb-1">Address</h6>
+                      <h6 className="mb-1">Alamat Tinggal</h6>
                       <p className="mb-0">{siswa.alamat}</p>
                     </div>
                   </div>
@@ -326,7 +326,7 @@ function SiswaDetail() {
           <section className="mb-5">
             <div className="d-flex justify-content-between align-items-center mb-4">
               <h3 className="fw-bold text-custom">
-                <i className="bi bi-folder-fill me-2"></i> Projects
+                <i className="bi bi-folder-fill me-2"></i> Proyek
               </h3>
               <span className="badge bg-custom rounded-pill px-3 py-2">
                 {projects.length} projects
@@ -372,10 +372,10 @@ function SiswaDetail() {
                             {shortDesc}
                             {p.deskripsi.length > 100 && (
                               <span
-                                className="text-primary ms-1 cursor-pointer"
+                                className="text-free ms-1 cursor-pointer"
                                 onClick={() => handleShowMore(p)}
                               >
-                                Read more →
+                                Baca Selengkapnya →
                               </span>
                             )}
                           </p>
@@ -394,11 +394,11 @@ function SiswaDetail() {
                               {p.link_web && (
                                 <a
                                   href={p.link_web}
-                                  className="btn btn-outline-primary w-100"
+                                  className="btn btn-free w-100"
                                   target="_blank"
                                   rel="noreferrer"
                                 >
-                                  View Project{" "}
+                                  Lihat Proyek{" "}
                                   <i className="bi bi-box-arrow-up-right ms-2"></i>
                                 </a>
                               )}
@@ -421,7 +421,7 @@ function SiswaDetail() {
           {/* Experience Section */}
           <section className="mb-4">
             <h3 className="fw-bold mb-4 text-custom">
-              <i className="bi bi-award-fill me-2"></i> Experience
+              <i className="bi bi-award-fill me-2"></i> Pengalaman
             </h3>
 
             {pengalaman.length > 0 ? (
@@ -434,7 +434,7 @@ function SiswaDetail() {
                       <p className="text-muted">{exp.lokasi}</p>
                       {exp.foto && (
                         <button
-                          className="btn btn-sm btn-outline-primary"
+                          className="btn btn-sm btn-free"
                           onClick={() => {
                             setSelectedFoto(
                               `https://backend_best.smktibazma.com/uploads/${exp.foto}`
@@ -467,7 +467,7 @@ function SiswaDetail() {
         >
           <div className="modal-dialog modal-lg modal-dialog-centered">
             <div className="modal-content">
-              <div className="modal-header bg-primary text-white">
+              <div className="modal-header navbar-custom text-white">
                 <h5 className="modal-title">{selectedProject.name_project}</h5>
                 <button
                   className="btn-close btn-close-white"
@@ -485,12 +485,12 @@ function SiswaDetail() {
                 <p className="lead">{selectedProject.deskripsi}</p>
                 {selectedProject.tools && (
                   <div className="mb-4">
-                    <h6>Tools Used:</h6>
+                    <h6>Alat yang digunakan:</h6>
                     <div className="d-flex flex-wrap gap-2">
                       {selectedProject.tools.split(",").map((tool, index) => (
                         <span
                           key={index}
-                          className="badge bg-primary bg-opacity-10 text-primary py-2 px-3"
+                          className="badge btn-free py-2 px-3"
                         >
                           {tool.trim()}
                         </span>
@@ -501,7 +501,7 @@ function SiswaDetail() {
                 {selectedProject.link_web && (
                   <a
                     href={selectedProject.link_web}
-                    className="btn btn-primary"
+                    className="btn btn-free-nooutline"
                     target="_blank"
                     rel="noreferrer"
                   >

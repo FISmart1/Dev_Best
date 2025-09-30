@@ -26,6 +26,31 @@
   background-color: #637ea3;
 }
 
+.btn-free {
+  border: 1px solid #12294A;
+  color: #12294A;
+}
+
+.btn-free:hover {
+  background-color: #12294A;
+  color: white;
+}
+
+.btn-free-nooutline {
+  background-color: #12294A;
+  color: white;
+}
+
+.btn-free-nooutline:hover {
+  background-color: transparent;
+  color: #12294A;
+  border: 1px solid #12294A;
+}
+
+.text-free {
+  color: #12294A;
+}
+
 .no-select {
   user-select: none;
   -webkit-user-select: none; /* untuk Safari */
