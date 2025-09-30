@@ -374,6 +374,7 @@ function SiswaDetail() {
                               <span
                                 className="text-free ms-1 cursor-pointer"
                                 onClick={() => handleShowMore(p)}
+                                style={{ cursor: "pointer", color: "#12294A" }}
                               >
                                 Baca Selengkapnya →
                               </span>
