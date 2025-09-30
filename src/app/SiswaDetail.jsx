@@ -16,6 +16,8 @@ function SiswaDetail() {
   const [showModal, setShowModal] = useState(false);
   const [selectedProject, setSelectedProject] = useState(null);
   const [expandedExperiences, setExpandedExperiences] = useState({});
+  const [showFotoModal, setShowFotoModal] = useState(false);
+  const [selectedFoto, setSelectedFoto] = useState(null);
 
   const baseImageUrl = "https://backend_best.smktibazma.com/uploads/";
 
@@ -424,42 +426,25 @@ function SiswaDetail() {
 
             {pengalaman.length > 0 ? (
               <div className="row g-4">
-                {pengalaman.map((e) => (
-                  <div key={e.id} className="col-md-6">
-                    <div className="card border-0 shadow-sm h-100">
-                      <div className="card-body">
-                        <div className="d-flex align-items-start mb-3">
-                          <div className="bg-primary bg-opacity-10 text-birutua rounded-circle p-3 me-3">
-                            <i className="bi bi-briefcase-fill"></i>
-                          </div>
-                          <div>
-                            <h5 className="card-title fw-bold mb-1">
-                              {e.name}
-                            </h5>
-                            <p className="text-muted mb-2">
-                              <i className="bi bi-geo-alt-fill me-1"></i>{" "}
-                              {e.lokasi}
-                            </p>
-                          </div>
-                        </div>
-                        <p className="card-text">
-                          {expandedExperiences[e.id]
-                            ? e.deskripsi
-                            : `${e.deskripsi.slice(0, 150)}${
-                                e.deskripsi.length > 150 ? "..." : ""
-                              }`}
-                          {e.deskripsi.length > 150 && (
-                            <span
-                              className="ms-2 text-primary cursor-pointer"
-                              onClick={() => toggleExperience(e.id)}
-                            >
-                              {expandedExperiences[e.id]
-                                ? "Show less"
-                                : "Show more"}
-                            </span>
-                          )}
-                        </p>
-                      </div>
+                {pengalaman.map((exp, index) => (
+                  <div key={index} className="card mb-3">
+                    <div className="card-body">
+                      <h5 className="card-title">{exp.name}</h5>
+                      <p className="card-text">{exp.deskripsi}</p>
+                      <p className="text-muted">{exp.lokasi}</p>
+                      {exp.foto && (
+                        <button
+                          className="btn btn-sm btn-outline-primary"
+                          onClick={() => {
+                            setSelectedFoto(
+                              `https://backend_best.smktibazma.com/uploads/${exp.foto}`
+                            );
+                            setShowFotoModal(true);
+                          }}
+                        >
+                          <i className="bi bi-eye"></i> Lihat Sertifikat
+                        </button>
+                      )}
                     </div>
                   </div>
                 ))}
@@ -537,6 +522,46 @@ function SiswaDetail() {
           </div>
         </div>
       )}
+      {showFotoModal && (
+  <div
+    className="modal fade show"
+    style={{ display: "block", backgroundColor: "rgba(0,0,0,0.6)" }}
+  >
+    <div className="modal-dialog modal-lg modal-dialog-centered">
+      <div className="modal-content">
+        <div className="modal-header">
+          <h5 className="modal-title">Sertifikat Pengalaman</h5>
+          <button
+            type="button"
+            className="btn-close"
+            onClick={() => setShowFotoModal(false)}
+          ></button>
+        </div>
+        <div className="modal-body text-center">
+          {selectedFoto ? (
+            <img
+              src={selectedFoto}
+              alt="Sertifikat"
+              className="img-fluid rounded"
+            />
+          ) : (
+            <p className="text-muted">Tidak ada foto sertifikat</p>
+          )}
+        </div>
+        <div className="modal-footer">
+          <button
+            type="button"
+            className="btn btn-secondary"
+            onClick={() => setShowFotoModal(false)}
+          >
+            Tutup
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+)}
+
     </div>
   );
 }
